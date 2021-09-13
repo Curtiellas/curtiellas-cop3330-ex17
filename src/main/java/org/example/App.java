@@ -17,18 +17,26 @@ public class App
         //by comparing the blood alcohol content to 0.08
         final double threshold = 0.08f;
         double ratio;
+        double gender;
+        double intake;
+        double weight;
+        double hours;
 
-        System.out.println("Enter a 1 if you are male or a 2 if you are female: ");
-        int gender = sc.nextInt();
+        System.out.print("Enter a 1 if you are male or a 2 if you are female: ");
+        gender = numericCheck();
+        //gender = sc.nextInt();
 
-        System.out.println("How many ounces of alcohol did you have? ");
-        double intake = sc.nextDouble();
+        System.out.print("How many ounces of alcohol did you have? ");
+        intake = numericCheck();
+        //intake = sc.nextDouble();
 
-        System.out.println("What is your weight, in pounds? ");
-        double weight = sc.nextDouble();
+        System.out.print("What is your weight, in pounds? ");
+        weight = numericCheck();
+        //weight = sc.nextDouble();
 
-        System.out.println("How many hours has it been since your last drink? ");
-        int hours = sc.nextInt();
+        System.out.print("How many hours has it been since your last drink? ");
+        hours = numericCheck();
+        //hours = sc.nextDouble();
 
         //men
         if (gender == 1)
@@ -50,5 +58,21 @@ public class App
 
         else
             System.out.println("It is not legal for you to drive");
+    }
+
+    public static double numericCheck ()
+    {
+        Scanner sc = new Scanner((System.in));
+        double theNumber;
+
+        while (true)
+        {
+            try {
+                theNumber = Double.parseDouble(sc.next());
+                return theNumber;
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid input. Try again. ");
+            }
+        }
     }
 }
